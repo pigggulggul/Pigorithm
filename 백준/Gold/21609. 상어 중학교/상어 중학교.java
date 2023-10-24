@@ -63,7 +63,6 @@ public class Main {
 							maxY = findY;
 						} else if (count == max) {
 							if (maxZero < findzero) {
-//								System.out.println("i :" + i + " | j : " + j + " | 변경1 | maxZero,findzero :" + maxZero+" "+findzero);
 								maxPosition[0] = i;
 								maxPosition[1] = j;
 								maxZero = findzero;
@@ -71,14 +70,12 @@ public class Main {
 								maxX=findX;
 								maxY=findY;
 							} else if (maxZero == findzero && maxX < findX) {
-//								System.out.println("i :" + i + " | j : " + j + " | 변경2 | maxZero,findzero :"+maxZero+" "+findzero);
 								maxPosition[0] = i;
 								maxPosition[1] = j;
 								maxX=findX;
 								maxY=findY;
 								maxNum = prevNum;
 							} else if (maxZero == findzero && maxX == findX && maxY < findY) {
-//								System.out.println("i :" + i + " | j : " + j + " | 변경3");
 								maxPosition[0] = i;
 								maxPosition[1] = j;
 								maxX=findX;
@@ -94,36 +91,20 @@ public class Main {
 				System.out.println(point);
 				return;
 			}
-//			System.out.println("기준 i,j | x,y"+maxPosition[0]+" "+maxPosition[1]+" "+maxX+" "+maxY);
 			// 그룹의 갯수의 제곱만큼 점수 얻음
 			getPoint();
 
-//			System.out.println("점수 ++" + point);
-
 			// 블록그룹 제거
-//			System.out.println("------------point---------");
-//			printPoint();
-
-//			System.out.println("삭제 - x : "+maxPosition[0] + "| y : "+maxPosition[1]);
 			deleteBlock(maxPosition[0], maxPosition[1]);
 
-//			printPoint();
-//			System.out.println("--------------------------");
-
-//			System.out.println("--------중력적용전");
-//			printArr();
 			// 중력적용
 			gravity();
-//			System.out.println("--------중력적용후");
-//			printArr();
+			
 			// 배열 반시계 90도 돌리기
 			arr = rotate90();
 
-//			System.out.println("--------돌린 후");
-//			printArr();
 			// 중력적용
 			gravity();
-//			printArr();
 		}
 	}
 
@@ -134,8 +115,6 @@ public class Main {
 			int nx = x + dx[d];
 			int ny = y + dy[d];
 			if (!check(nx, ny))
-				continue;
-			if (pointArr[nx][ny] != max)
 				continue;
 			if (arr[nx][ny] == maxNum || arr[nx][ny] == 0) {
 				deleteBlock(nx, ny);
@@ -190,9 +169,7 @@ public class Main {
 	}
 
 	private static int[][] rotate90() {
-
 		int[][] arr_copy = new int[N][N];
-
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
 				arr_copy[i][j] = arr[j][N - i - 1];
@@ -221,44 +198,8 @@ public class Main {
 			}
 		}
 	}
-
-	private static void changeNum(int blank, int num, int start, int i) {
-		if (blank > num) {
-			while (start != num) {
-				arr[blank - 1][i] = arr[num - 1][i];
-				arr[num - 1][i] = -2;
-				num--;
-				blank--;
-			}
-		}
-	}
-
 	private static void getPoint() {
 		point += max * max;
 	}
 
-	private static void printArr() {
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				if (arr[i][j] == -2) {
-					System.out.print("x ");
-				} else {
-					System.out.print(arr[i][j] + " ");
-				}
-
-			}
-			System.out.println();
-		}
-		System.out.println();
-	}
-
-	private static void printPoint() {
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				System.out.print(pointArr[i][j] + " ");
-			}
-			System.out.println();
-		}
-		System.out.println();
-	}
 }
