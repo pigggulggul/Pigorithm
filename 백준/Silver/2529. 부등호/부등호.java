@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int N, result;
+    static int N;
     static char[] updown;
     static char[] numChar;
     static boolean[] numberFlag;
@@ -22,33 +22,26 @@ public class Main {
             updown[i] = st.nextToken().charAt(0);
         }
         BT(0,0);
-        System.out.println(maxString);
-        System.out.println(minString);
-//        printArr();
+        System.out.println(maxNum);
+        int a = 1;
+        for (int i = 0; i < N; i++) {
+            a *= 10;
+        }
+        if(minNum < a){
+            System.out.println("0"+minNum);
+        }else {
+            System.out.println(minNum);
+        }
+
     }
-//14321
-    //
     private static void BT(int x, long num) {
          if(x == N+1){
 
             if(num > maxNum){
-//                System.out.println("max 갱신"+num);
-//                System.out.println(Arrays.toString(numberFlag));
-
-                String a="";
-                for (int i = 0; i < numChar.length; i++) {
-                    a+=numChar[i]-'0'+"";
-                }
-                maxString=a;
                 maxNum = num;
             }
             if(num < minNum){
-                String a="";
-                for (int i = 0; i < numChar.length; i++) {
-                    a+=numChar[i]-'0'+"";
-                }
                 minNum = num;
-                minString=a;
             }
             return;
         }
