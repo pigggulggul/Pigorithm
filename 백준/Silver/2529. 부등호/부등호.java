@@ -39,9 +39,7 @@ public class Main {
                 for (int i = 0; i < numChar.length; i++) {
                     a+=numChar[i]-'0'+"";
                 }
-                maxNum = num;
                 maxString=a;
-
                 maxNum = num;
             }
             if(num < minNum){
@@ -84,12 +82,6 @@ public class Main {
             return true;
         }else{
             return false;
-        }
-    }
-
-    private static void printArr() {
-        for (int j = 0; j < updown.length; j++) {
-            System.out.println(updown[j]);
         }
     }
 
