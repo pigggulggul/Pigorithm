@@ -51,12 +51,7 @@ public class Main {
 				}
 			}
 		}
-//		for (int i = 1; i < N+1; i++) {
-//			for (int j = 0; j < nodeList[i].size(); j++) {
-//				System.out.print(nodeList[i].get(j)+" ");
-//			}
-//			System.out.println();
-//		}
+
 		visited = new boolean[N+1];
 		visited[1]=true;
 		BT(1,0);
@@ -65,8 +60,6 @@ public class Main {
 		visited[farNode]=true;
 		BT(farNode,0);
 		
-//		 printArr();
-//		System.out.println(farNode);
 		 System.out.println(max);
 	}
 
@@ -81,7 +74,6 @@ public class Main {
 			}
 			visited[nodeList[x].get(i).w] = true;
 			result += nodeList[x].get(i).cost;
-//			System.out.println("x : " + x + " | i : " + i + " | cost : "+ nodeList[x].get(i).cost + " | result : "+result);
 			BT(nodeList[x].get(i).w,result);
 			visited[nodeList[x].get(i).w] = false;
 			result -= nodeList[x].get(i).cost;
@@ -90,10 +82,4 @@ public class Main {
 		
 	}
 
-
-	private static void printArr() {
-		for (int i = 1; i < N+1; i++) {
-			System.out.println();
-		}
-	}
 }
