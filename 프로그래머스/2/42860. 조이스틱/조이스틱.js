@@ -84,7 +84,7 @@ function moveRightIndex(compAlpha,name,index){
         return 0;
     }
     for(let i = index+1 ; cnt <name.length ; i++){
-        //왼쪽으로 이동하면서 name[i]과 compAlpha[i]가 다르면 left에 저장
+        //왼쪽으로 이동하면서 name[i]과 compAlpha[i]가 다르면 right에 저장
         rightCount +=1;
         cnt++;
         if(i>=name.length){
