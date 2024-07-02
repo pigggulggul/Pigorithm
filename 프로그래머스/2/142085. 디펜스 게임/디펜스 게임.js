@@ -1,9 +1,7 @@
 class PriorityQueue{
+    //초기화
     constructor(){
         this.heap = [];
-    }
-    getMax() {
-        return this.heap[1] ? this.heap[1] : null;
     }
     
     push(value){
@@ -54,7 +52,6 @@ function solution(n, k, enemy) {
   let arr = new PriorityQueue();
   var capacity = 0;
  
-
   //k번째까지는 일단 무적권 쓰면 capacity의 고려 대상에서 제외
   enemy.slice(0,k).forEach((element)=>arr.push(element));
   for(var i  =k;i<enemy.length;i++){
