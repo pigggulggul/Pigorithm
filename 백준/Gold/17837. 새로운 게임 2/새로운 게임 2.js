@@ -51,15 +51,10 @@ while (maxCount < 4 && turn < 1000) {
     // i 번 순서의 x,y값
     const [x, y, dir] = map.get(i);
 
-    // console.log(map.get(i), i);
     for (let j = 0; j < location[x][y].length; j++) {
       if (location[x][y][j][1] === i) {
         //특정 인덱스부터
         moveLocation(x, y, j, location[x][y][j][0]);
-        // for (let i = 0; i < N; i++) {
-        //   console.log(location[i]);
-        // }
-        // console.log();
         if (location[x][y].length >= 4) {
           return console.log(turn);
         }
@@ -76,10 +71,6 @@ while (maxCount < 4 && turn < 1000) {
       }
     }
   }
-  //   for (let i = 0; i < N; i++) {
-  //     console.log(location[i]);
-  //   }
-  //   console.log();
 }
 if (maxCount >= 4) {
   console.log(turn);
@@ -88,13 +79,10 @@ if (maxCount >= 4) {
 }
 
 function moveLocation(x, y, index, dir) {
-  //위 아래 왼쪽 오른쪽
-  //0이면1 2면3
   let originDir = dir;
   let nx = x + dx[dir];
   let ny = y + dy[dir];
   if (!checkWall(nx, ny)) {
-    //이동 할 곳의 x,y좌표
     if (dir < 2) {
       dir = (dir + 1) % 2;
     } else {
@@ -176,8 +164,6 @@ function moveLocation(x, y, index, dir) {
     }
   }
 }
-
-// 1 3 2 가 한 자리에 있으면 1 3 2 가 같이 이동.그럼 갱신 해줘야하는데
 function checkWall(x, y) {
   return x >= 0 && x < N && y >= 0 && y < N;
 }
