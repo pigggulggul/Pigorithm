@@ -17,10 +17,9 @@ public class Main {
 		for (int i = 0; i < M; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
-		// i=1~M-1부터 돌아가면서 각 칸에서 좌로 가장 높은 수, 우로 가장 높은 수 각각 구해서 둘 중 min에 맞춰서 count올리기
 		for (int i = 1; i < M - 1; i++) {
-			int left = confirmLeft(i);
-			int right = confirmRight(i);
+			int left = confirm(0, i);
+			int right = confirm(1, i);
 			int total = Math.min(left, right);
 			if (total > arr[i]) {
 				count += total - arr[i];
@@ -29,23 +28,22 @@ public class Main {
 		System.out.println(count);
 	}
 
-	private static int confirmLeft(int number) {
+	private static int confirm(int dir, int number) {
 		int max = 0;
-		for (int i = number; i >= 0; i--) {
-			if (arr[i] > max) {
-				max = arr[i];
+		if (dir == 0) {
+			for (int i = number; i >= 0; i--) {
+				if (arr[i] > max) {
+					max = arr[i];
+				}
+			}
+		} else {
+			for (int i = number; i < M; i++) {
+				if (arr[i] > max) {
+					max = arr[i];
+				}
 			}
 		}
-		return max;
-	}
 
-	private static int confirmRight(int number) {
-		int max = 0;
-		for (int i = number; i < M; i++) {
-			if (arr[i] > max) {
-				max = arr[i];
-			}
-		}
 		return max;
 	}
 }
