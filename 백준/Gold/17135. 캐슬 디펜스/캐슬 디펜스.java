@@ -68,28 +68,19 @@ public class Main {
 		cloneArr[N][p[1]] = 3;
 		cloneArr[N][p[2]] = 3;
 
-		int[][] checkArr0 = new int[N][M];
-		int[][] checkArr1 = new int[N][M];
-		int[][] checkArr2 = new int[N][M];
-		checkArr0 = makeDistance(checkArr0, p[0]);
-		checkArr1 = makeDistance(checkArr1, p[1]);
-		checkArr2 = makeDistance(checkArr2, p[2]);
+		int[][][] checkArr = new int[archerCount][N][M];
+		for(int i = 0 ; i < archerCount ; i++) {
+			checkArr[i] = makeDistance(checkArr[i], p[i]);			
+		}
 
 		while (checkEnemy(cloneArr)) {
 			// 공격
 			for (int i = 0; i < archerCount; i++) {
-				if (i == 0)
-					findEnemy(cloneArr, p[i], checkArr0);
-				else if (i == 1)
-					findEnemy(cloneArr, p[i], checkArr1);
-				else
-					findEnemy(cloneArr, p[i], checkArr2);
+				findEnemy(cloneArr, p[i], checkArr[i]);
 			}
 			enemy += attack(cloneArr);
 			replacePlate(cloneArr);
 
-//			printArr(cloneArr);
-//			System.out.println();
 		}
 		if (enemy > maxEnemy) {
 			maxEnemy = enemy;
@@ -187,8 +178,6 @@ public class Main {
 		if (maxX != -1 && maxY != -1) {
 			arr[maxX][maxY] = 2;
 		}
-//		printArr(arr);
-//		System.out.println();
 	}
 
 	private static boolean checkWall(int x, int y) {
